@@ -1,0 +1,36 @@
+{% extends 'doit/base.html' %}
+{% load crispy_forms_tags %}
+ {% block title%}
+    <title>Login</title>
+{% endblock %}
+
+{% block account %}
+    
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        {% for message in messages %}
+            <div class="alert-success">
+                {{ message }}             
+            </div>               
+        {% endfor%}
+        <div class="jumbotron mx-auto" style="background-color: #343a40; margin-top: 200px; width: 600px" >
+            <h3 class="text-white mb-3">Log In  ToDoApp</h3>
+            <hr style="background-color: #fff">
+            <form class="text-white" action="" method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <p class="text-white">{{ form|crispy }}</p>
+                </div> 
+                <div class="form-group text-center">
+                     <input class="btn btn-success col-md-3" style="font-size: 20px" type="submit" name="submit" value="Login">
+                </div>
+                <div class="text-center">
+                    <p>Need an account? <a style="font-size: 18px"  href="{% url 'join' %}">Sign Up</a></p>
+                </div>       
+            </form> 
+            <hr style="background-color: #fff">          
+        </div>
+    </div>
+{% endblock %}

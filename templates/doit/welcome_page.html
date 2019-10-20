@@ -1,0 +1,32 @@
+
+{% extends 'doit/base.html' %}
+{% load staticfiles %}
+
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="{% static 'doit/css/welcome_page.css' %}">
+</head>
+    {% block title%}
+	<title>Welcome - ToDoApp</title>
+	{% endblock %}
+
+{% block content %}
+   {% if user.is_authenticated %}
+
+
+   {% else %}
+      <div class="container">
+   	    <div class="block jumbotron col-md-12" style="background-color: #343a40; margin-top: 200px;">
+   	    	<h1 class="text-center text-white">{{ offer.title }}</h1>
+   	    	<p class="text-center text-white" style="margin-top: 25px;">{{ offer.paragraph }}</p>
+   	    	<h5 class="text-center text-white" style="margin-top: 25px;">{{ offer.pre_offer }}</h5>
+   	    	<div class="text-center" style="margin-top: 30px;">
+   	    		<a class="btn btn-success btn-lg" href="{% url 'join' %}" style="border-radius: 3px;"><b>{{ offer.button_offer_text }}</b></a> 	    		
+   	    	</div>    	
+   	    </div>	
+      </div>
+   {% endif %}
+
+
+    
+{% endblock %}

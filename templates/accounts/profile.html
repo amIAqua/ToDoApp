@@ -1,0 +1,16 @@
+{% extends 'doit/base.html' %}
+{% load crispy_forms_tags %}
+ {% block title%}
+    <title>Profile</title>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="jumbotron mx-auto" style="background-color: #343a40; margin-top: 200px; width: 600px" >
+            <h3 class="text-white mb-3">{{ user }}</h3>
+            <hr style="background-color: #fff">
+            
+            <hr style="background-color: #fff">          
+        </div>
+    </div>
+{% endblock %}

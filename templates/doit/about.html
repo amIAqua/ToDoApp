@@ -1,0 +1,65 @@
+{% extends 'doit/base.html' %}
+
+ {% block title%}
+	<title>About ToDoApp</title>
+{% endblock %}
+
+{% block account %} 
+        <ul class="navbar-nav">                
+            <li><i class="acc material-icons">account_circle</i></li>
+            {% if user.is_authenticated %}
+                <li class="acc_name text-white"><a class="acc_choose" href="{% url 'logout' %}">Logout</a></li>
+            {% else %}
+                <li class="acc_name text-white"><a class="acc_choose" href="{% url 'login' %}">LogIn</a></li>
+            {% endif %}                                	    
+        </ul>          	    
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="jumbotron mx-auto" style="background-color: #343a40; margin-top: 200px">
+             <h3 class="text-white mb-3">{{ offer.main_title }}</h3>
+             <hr style="background-color: #fff">
+             <div class="row mt-5">
+                <div class="col-md-7">
+                    <h4 class="text-white mb-3">What we are created for</h4>
+                    <p class="text-white">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam tristique id augue eu mattis. Nulla tincidunt, turpis et cursus mattis, magna nisi semper diam, vel venenatis metus sapien a urna. Nulla volutpat augue tellus, pretium luctus tortor dictum vitae. Suspendisse potenti. Praesent rhoncus erat neque, vitae interdum nibh vehicula sit amet.                       
+                    </p>                 
+                </div>
+                <div class="col-md-1">             
+                </div>
+                <div class="col-md-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                    width="200" height="200"
+                    viewBox="0 0 172 172"
+                    style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#ffffff"><path d="M51.6,6.88c-1.70656,0 -3.19812,1.20938 -3.44,2.9025l-3.44,24.08c-0.1075,0.76594 -0.12094,0.95406 -0.215,1.6125c-12.06687,9.91688 -20.425,24.12031 -23.005,40.205h-4.3c-1.89469,0 -3.44,1.54531 -3.44,3.44v13.76c0,1.89469 1.54531,3.44 3.44,3.44h4.3c2.58,16.08469 10.93813,30.28813 23.005,40.205c0.1075,0.65844 0.1075,0.84656 0.215,1.6125l3.44,24.08c0.24188,1.69313 1.73344,2.9025 3.44,2.9025h68.8c1.70656,0 3.19813,-1.20937 3.44,-2.9025l3.44,-24.08c0.1075,-0.76594 0.12094,-0.95406 0.215,-1.6125c14.59313,-11.99969 23.865,-30.19406 23.865,-50.525c0,-20.33094 -9.27187,-38.52531 -23.865,-50.525c-0.1075,-0.65844 -0.1075,-0.84656 -0.215,-1.6125l-3.44,-24.08c-0.24187,-1.69312 -1.73344,-2.9025 -3.44,-2.9025zM86,27.52c32.34406,0 58.48,26.13594 58.48,58.48c0,32.34406 -26.13594,58.48 -58.48,58.48c-32.34406,0 -58.48,-26.13594 -58.48,-58.48c0,-32.34406 26.13594,-58.48 58.48,-58.48zM86,34.4c-28.50094,0 -51.6,23.09906 -51.6,51.6c0,28.50094 23.09906,51.6 51.6,51.6c28.50094,0 51.6,-23.09906 51.6,-51.6c0,-28.50094 -23.09906,-51.6 -51.6,-51.6zM61.92,75.68h48.16c1.89469,0 3.44,1.53188 3.44,3.44c0,1.90813 -1.54531,3.44 -3.44,3.44h-48.16c-1.89469,0 -3.44,-1.53187 -3.44,-3.44c0,-1.90812 1.54531,-3.44 3.44,-3.44zM68.8,89.44h34.4c1.89469,0 3.44,1.53188 3.44,3.44c0,1.90813 -1.54531,3.44 -3.44,3.44h-34.4c-1.89469,0 -3.44,-1.53187 -3.44,-3.44c0,-1.90812 1.54531,-3.44 3.44,-3.44z"></path></g></g></svg>                              
+                </div>                
+             </div>
+              <div class="row mt-5">
+                <div class="col-md-2">
+                   <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                       width="100" height="100"
+                       viewBox="0 0 172 172"
+                       style=" fill:#000000; margin-left: 60px; margin-top: 30px;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#ffffff"><path d="M86,13.76c-26.27236,0 -49.28074,14.07163 -61.92,35.0786v-14.4386c0.01273,-0.92983 -0.35149,-1.82522 -1.00967,-2.48214c-0.65819,-0.65692 -1.55427,-1.01942 -2.48408,-1.00489c-1.89722,0.02966 -3.41223,1.58976 -3.38625,3.48703v27.52h27.52c1.24059,0.01754 2.39452,-0.63425 3.01993,-1.7058c0.62541,-1.07155 0.62541,-2.39684 0,-3.46839c-0.62541,-1.07155 -1.77935,-1.72335 -3.01993,-1.7058h-16.25266c11.03442,-20.46344 32.61614,-34.4 57.53266,-34.4c1.24059,0.01754 2.39452,-0.63425 3.01993,-1.7058c0.62541,-1.07155 0.62541,-2.39684 0,-3.46839c-0.62541,-1.07155 -1.77935,-1.72335 -3.01993,-1.7058zM110.08,17.2v5.16c-0.05633,0.35612 -0.05633,0.71888 0,1.075l0.00672,21.285c-0.01754,1.24059 0.63425,2.39452 1.7058,3.01993c1.07155,0.62541 2.39684,0.62541 3.46839,0c1.07155,-0.62541 1.72335,-1.77935 1.7058,-3.01993l-0.00672,-16.27281c20.47017,11.03231 34.4,32.63469 34.4,57.55281c-0.01754,1.24059 0.63425,2.39452 1.7058,3.01993c1.07155,0.62541 2.39684,0.62541 3.46839,0c1.07155,-0.62541 1.72335,-1.77935 1.7058,-3.01993c0,-26.2685 -14.05792,-49.27865 -35.06515,-61.92h14.42515c1.24059,0.01754 2.39452,-0.63425 3.01993,-1.7058c0.62541,-1.07155 0.62541,-2.39684 0,-3.46839c-0.62541,-1.07155 -1.77935,-1.72335 -3.01993,-1.7058zM86,51.6c-18.95785,0 -34.4,15.44215 -34.4,34.4c0,18.95785 15.44215,34.4 34.4,34.4c18.95785,0 34.4,-15.44215 34.4,-34.4c0,-18.95785 -15.44215,-34.4 -34.4,-34.4zM86,58.48c15.23962,0 27.52,12.28038 27.52,27.52c0,15.23962 -12.28038,27.52 -27.52,27.52c-15.23962,0 -27.52,-12.28038 -27.52,-27.52c0,-15.23962 12.28038,-27.52 27.52,-27.52zM85.94625,65.48094c-0.91235,0.01424 -1.78168,0.39033 -2.41673,1.04554c-0.63505,0.65521 -0.9838,1.53586 -0.96952,2.44821v13.58531h-13.58531c-1.24059,-0.01754 -2.39452,0.63425 -3.01993,1.7058c-0.62541,1.07155 -0.62541,2.39684 0,3.46839c0.62541,1.07155 1.77935,1.72335 3.01993,1.7058h13.58531v13.58531c-0.01754,1.24059 0.63425,2.39452 1.7058,3.01993c1.07155,0.62541 2.39684,0.62541 3.46839,0c1.07155,-0.62541 1.72335,-1.77935 1.7058,-3.01993v-13.58531h13.58531c1.24059,0.01754 2.39452,-0.63425 3.01993,-1.7058c0.62541,-1.07155 0.62541,-2.39684 0,-3.46839c-0.62541,-1.07155 -1.77935,-1.72335 -3.01993,-1.7058h-13.58531v-13.58531c0.01457,-0.93099 -0.34884,-1.82813 -1.00723,-2.48652c-0.65839,-0.65839 -1.55553,-1.0218 -2.48652,-1.00723zM17.14625,82.51297c-1.89722,0.02966 -3.41223,1.58976 -3.38625,3.48703c0,26.27236 14.07163,49.28074 35.0786,61.92h-14.4386c-1.24059,-0.01754 -2.39452,0.63425 -3.01993,1.7058c-0.62541,1.07155 -0.62541,2.39684 0,3.46839c0.62541,1.07155 1.77935,1.72335 3.01993,1.7058h27.52v-27.52c0.01273,-0.92983 -0.35149,-1.82522 -1.00967,-2.48214c-0.65819,-0.65692 -1.55427,-1.01942 -2.48408,-1.00489c-1.89722,0.02966 -3.41223,1.58976 -3.38625,3.48703v16.25265c-20.46344,-11.03441 -34.4,-32.61614 -34.4,-57.53265c0.01273,-0.92983 -0.35149,-1.82522 -1.00967,-2.48214c-0.65819,-0.65692 -1.55427,-1.01942 -2.48408,-1.00489zM149.08235,110.03297c-0.17563,0.00228 -0.35083,0.018 -0.52406,0.04703l-21.27828,0.00672c-1.24059,-0.01754 -2.39452,0.63425 -3.01993,1.7058c-0.62541,1.07155 -0.62541,2.39684 0,3.46839c0.62541,1.07155 1.77935,1.72335 3.01993,1.7058l16.27281,-0.00672c-11.03231,20.47017 -32.6347,34.4 -57.55281,34.4c-1.24059,-0.01754 -2.39452,0.63425 -3.01993,1.7058c-0.62541,1.07155 -0.62541,2.39684 0,3.46839c0.62541,1.07155 1.77935,1.72335 3.01993,1.7058c26.2685,0 49.27865,-14.05792 61.92,-35.06515v14.42515c-0.01754,1.24059 0.63425,2.39452 1.7058,3.01993c1.07155,0.62541 2.39684,0.62541 3.46839,0c1.07155,-0.62541 1.72335,-1.77935 1.7058,-3.01993v-27.52h-5.15328c-0.18651,-0.03116 -0.37528,-0.04689 -0.56437,-0.04703z"></path></g></g></svg>                          
+                </div>
+                <div class="col-md-1">             
+                </div>
+                <div class="col-md-9">
+                    <h4 class="text-white mb-3">Our interesting history</h4>
+                    <p class="text-white">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam tristique id augue eu mattis. Nulla tincidunt, turpis et cursus mattis, magna nisi semper diam, vel venenatis metus sapien a urna. Nulla volutpat augue tellus, pretium luctus tortor dictum vitae. Suspendisse potenti. Praesent rhoncus erat neque, vitae interdum nibh vehicula sit amet.Praesent rhoncus erat neque, vitae interdum nibh vehicula sit amet.Praesent rhoncus erat neque, vitae interdum nibh vehicula sit amet.Nullam tristique id augue eu mattis. Nulla tincidunt, turpis et cursus mattis, magna nisi semper diam, vel venenatis metus sapien a urna.                                        
+                    </p>                 
+                </div>               
+            </div>
+            <hr style="background-color: #fff">
+            {% if user.is_authenticated %}
+                
+                
+            {% else %}
+                <div class="text-center mt-5">
+                    <a href="{% url 'join' %}" class="btn btn-success btn-lg" style="font-size: 22px border-radius: 3px;"><b>I want to try!</b></a>
+                </div> 
+            {% endif %}        
+        </div>
+        
+    </div>
+{% endblock %}
