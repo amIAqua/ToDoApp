@@ -4,16 +4,7 @@
 	<title>About ToDoApp</title>
 {% endblock %}
 
-{% block account %} 
-        <ul class="navbar-nav">                
-            <li><i class="acc material-icons">account_circle</i></li>
-            {% if user.is_authenticated %}
-                <li class="acc_name text-white"><a class="acc_choose" href="{% url 'logout' %}">Logout</a></li>
-            {% else %}
-                <li class="acc_name text-white"><a class="acc_choose" href="{% url 'login' %}">LogIn</a></li>
-            {% endif %}                                	    
-        </ul>          	    
-{% endblock %}
+
 
 {% block content %}
     <div class="container">

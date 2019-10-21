@@ -6,11 +6,27 @@
 
 {% block content %}
     <div class="container">
-        <div class="jumbotron mx-auto" style="background-color: #343a40; margin-top: 200px; width: 600px" >
-            <h3 class="text-white mb-3">{{ user }}</h3>
+        <div class="jumbotron mx-auto" style="background-color: #343a40; margin-top: 200px; width: 900px" >      
+                <h4 class="text-white mb-3 col-md-2">{{ user }}</h4>      
             <hr style="background-color: #fff">
-            
-            <hr style="background-color: #fff">          
+                <div class="content-section">
+                    <div class="media row">                   
+                        <img class="rounded-circle account-img col-md-2"  height="110" src="{{ user.userprofile.profile_picture.url }}">
+                        <div class="media-body col-md-10">
+                            <h3 class="account-heading text-white">{{ user.first_name}}, {{ user.last_name}}</h3>
+                            <h6 class="text-white">{{ user.email }}</h6>
+                        </div>                    
+                    </div>                 
+                </div>         
+             <hr style="background-color: #fff">
+             {% block profile_update %}
+                     {% for message in messages %}
+                         <div class="alert alert-success">
+                             {{ message }}          
+                         </div>          
+                     {% endfor %}
+                 <a class="btn btn-info col-md-2" href="{% url 'update_profile' %}">Update profile</a>          
+             {% endblock %}        
         </div>
     </div>
 {% endblock %}

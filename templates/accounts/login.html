@@ -4,18 +4,17 @@
     <title>Login</title>
 {% endblock %}
 
-{% block account %}
-    
+{% block account %}  
 {% endblock %}
 
 {% block content %}
     <div class="container">
-        {% for message in messages %}
-            <div class="alert-success">
-                {{ message }}             
-            </div>               
-        {% endfor%}
         <div class="jumbotron mx-auto" style="background-color: #343a40; margin-top: 200px; width: 600px" >
+            {% for message in messages %}
+                <div class="alert alert-success">
+                    {{ message }}             
+                </div>         
+            {% endfor%}
             <h3 class="text-white mb-3">Log In  ToDoApp</h3>
             <hr style="background-color: #fff">
             <form class="text-white" action="" method="POST">
