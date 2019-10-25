@@ -1,0 +1,82 @@
+{% extends 'doit/base.html' %}
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+
+{% block title%}
+    <title>Your plans</title>
+    {% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="text-center">
+            <h2 class="gw" style="margin-top: 140px;">You can plan whatever, wherever and whenever you wan't. Just do it! </h2>
+            <hr style="background-color: #000; margin-bottom: -130px">
+        </div>        
+        {% if table %}
+            <table class="table table-striped table-hover" style="margin-top: 300px" >
+            <thead>
+                <tr>
+                    <th>What</th>
+                    <th>Where</th>
+                    <th>When</th>
+                    <th>Options</th>            
+                </tr>     
+            </thead>
+            <tbody class="table-hover">
+                {% for table_line in table %}
+                <tr>
+                    <td>{{ table_line.what }}</td>
+                    <td>{{ table_line.where }}</td>
+                    <td>{{ table_line.when|date:"d M Y, H:i" }}</td>
+                    <td>
+                        <a href="{% url 'doit:edit' table_line.id %}" data-toggle="modal" data-target="#addPlan"><i class="material-icons">add</i></a>
+                        <a href="{% url 'doit:delete' table_line.id %}"><i class="material-icons">clear</i></a>
+                    </td>                
+                </tr>                 
+                {% endfor %}
+            </tbody>
+           </table>
+            <div class="text-center">
+            <a style="margin-top: 30px; width: 70px; height: 70px; border-radius: 50px; background-color: #343a40;" class="add_plan btn" href="" data-toggle="modal" data-target="#addPlan"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                   width="40" height="40"
+                   viewBox="0 0 172 172"
+                   style=" fill:#000000; margin-top: 8px;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#ffffff"><path d="M86,6.88c-43.65603,0 -79.12,35.46397 -79.12,79.12c0,43.65603 35.46397,79.12 79.12,79.12c43.65603,0 79.12,-35.46397 79.12,-79.12c0,-43.65603 -35.46397,-79.12 -79.12,-79.12zM86,13.76c39.93779,0 72.24,32.30221 72.24,72.24c0,39.93779 -32.30221,72.24 -72.24,72.24c-39.93779,0 -72.24,-32.30221 -72.24,-72.24c0,-39.93779 32.30221,-72.24 72.24,-72.24zM85.94625,58.43297c-1.89722,0.02966 -3.41223,1.58976 -3.38625,3.48703v20.64h-20.64c-1.24059,-0.01754 -2.39452,0.63425 -3.01993,1.7058c-0.62541,1.07155 -0.62541,2.39684 0,3.46839c0.62541,1.07155 1.77935,1.72335 3.01993,1.7058h20.64v20.64c-0.01754,1.24059 0.63425,2.39452 1.7058,3.01993c1.07155,0.62541 2.39684,0.62541 3.46839,0c1.07155,-0.62541 1.72335,-1.77935 1.7058,-3.01993v-20.64h20.64c1.24059,0.01754 2.39452,-0.63425 3.01993,-1.7058c0.62541,-1.07155 0.62541,-2.39684 0,-3.46839c-0.62541,-1.07155 -1.77935,-1.72335 -3.01993,-1.7058h-20.64v-20.64c0.01273,-0.92983 -0.35149,-1.82522 -1.00967,-2.48214c-0.65819,-0.65692 -1.55427,-1.01942 -2.48408,-1.00489z"></path></g></g></svg></a>
+            </div>
+        {% else %}
+            <div class="text-center" style="margin-top: 300px;">
+                <h1>You don't have any plans yet</h1>
+                <a style="margin-top: 30px; width: 70px; height: 70px; border-radius: 50px; background-color: #343a40;" class="btn" href="" data-toggle="modal" data-target="#addPlan"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                   width="40" height="40"
+                   viewBox="0 0 172 172"
+                   style=" fill:#000000; margin-top: 8px;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#ffffff"><path d="M86,6.88c-43.65603,0 -79.12,35.46397 -79.12,79.12c0,43.65603 35.46397,79.12 79.12,79.12c43.65603,0 79.12,-35.46397 79.12,-79.12c0,-43.65603 -35.46397,-79.12 -79.12,-79.12zM86,13.76c39.93779,0 72.24,32.30221 72.24,72.24c0,39.93779 -32.30221,72.24 -72.24,72.24c-39.93779,0 -72.24,-32.30221 -72.24,-72.24c0,-39.93779 32.30221,-72.24 72.24,-72.24zM85.94625,58.43297c-1.89722,0.02966 -3.41223,1.58976 -3.38625,3.48703v20.64h-20.64c-1.24059,-0.01754 -2.39452,0.63425 -3.01993,1.7058c-0.62541,1.07155 -0.62541,2.39684 0,3.46839c0.62541,1.07155 1.77935,1.72335 3.01993,1.7058h20.64v20.64c-0.01754,1.24059 0.63425,2.39452 1.7058,3.01993c1.07155,0.62541 2.39684,0.62541 3.46839,0c1.07155,-0.62541 1.72335,-1.77935 1.7058,-3.01993v-20.64h20.64c1.24059,0.01754 2.39452,-0.63425 3.01993,-1.7058c0.62541,-1.07155 0.62541,-2.39684 0,-3.46839c-0.62541,-1.07155 -1.77935,-1.72335 -3.01993,-1.7058h-20.64v-20.64c0.01273,-0.92983 -0.35149,-1.82522 -1.00967,-2.48214c-0.65819,-0.65692 -1.55427,-1.01942 -2.48408,-1.00489z"></path></g></g></svg></a>
+            </div>
+        {% endif %}
+        <!-- Modal -->
+        <div class="modal fade" id="addPlan" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title" id="exampleModalLabel">Add new </h3>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="" method="POST">
+                            {% csrf_token %}
+                            {{ add_line_form|crispy }}
+                            
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary btn-lg">Add</button>
+                                <button type="button" class="btn btn-secondary btn-lg" data-dismiss="modal">Close</button>
+                            </div>
+                        </form>                    
+                </div>
+            </div>
+        </div>                           
+    </div>
+{% endblock %}
+
+
+

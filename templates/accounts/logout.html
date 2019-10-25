@@ -8,14 +8,14 @@
 
 {% block content %}
     <div class="container">
-        <div class="jumbotron mx-auto" style="background-color: #343a40; margin-top: 200px; width: 600px" >
+        <div class="jumbotron mx-auto blue-gradient" style="background-color: #343a40; margin-top: 200px; width: 600px" >
             <div class="text-center">
                 <h3 class="text-white mb-3">You have been logged out</h3>
             </div>
             <hr style="background-color: #fff">
             <div class="text-center">
-                <a class="btn btn-info" href="{% url 'doit:welcome_page' %}">Home </a> 
-                <a class="btn btn-info" href="{% url 'login' %}">Log in </a>
+                <a class="btn bg-info" href="{% url 'doit:welcome_page' %}">Home </a> 
+                <a class="btn bg-info" href="{% url 'login' %}">Log in </a>
             </div>      
         </div>
     </div>

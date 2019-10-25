@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
 class WelcomePageOffer(models.Model):
@@ -29,4 +30,17 @@ class AboutPageInformation(models.Model):
 
     def __str__(self):
         return self.main_title
+
+
+class DoItLine(models.Model):
+
+    user = models.ForeignKey(User, on_delete = models.CASCADE)
+    what = models.CharField(max_length = 100, blank = True)
+    where = models.CharField(max_length = 50, blank = True)
+    when = models.DateTimeField(auto_now_add = True)
+    #slug = models.SlugField(default = what)
+   
+
+    def __str__(self):
+        return str(self.user) + ' ' + self.what
 

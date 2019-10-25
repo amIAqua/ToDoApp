@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, reverse
+from django.urls import reverse_lazy 
 from django.http import HttpResponseRedirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
@@ -31,7 +32,7 @@ class JoinView(View):
             email = registration_form.cleaned_data.get('email')
             username = registration_form.cleaned_data.get('username')
             messages.success(request, f'Your account has been created! Now Log in!')
-            return redirect(reverse('login'))
+            return redirect(reverse_lazy('login'))
         
     
 class ProfileView(View):
